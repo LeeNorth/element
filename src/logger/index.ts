@@ -5,7 +5,6 @@ import * as Sentry from '@sentry/react-native';
 import * as env from '@/env';
 import { DebugContext } from '@/logger/debugContext';
 import { device } from '@/storage';
-import isTestFlight from '@/helpers/isTestFlight';
 
 export enum LogLevel {
   Debug = 'debug',
@@ -275,6 +274,6 @@ export const logger = new Logger();
  */
 if (env.IS_DEV) {
   logger.addTransport(consoleTransport);
-} else if (env.IS_PROD || isTestFlight) {
+} else if (env.IS_PROD) {
   logger.addTransport(sentryTransport);
 }
